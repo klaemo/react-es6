@@ -4,7 +4,7 @@
   "description": "React + Browserify + Babel = Future",
   "main": "index.js",
   "scripts": {
-    "start": "npm run watch & node server.js",
+    "start": "parallelshell \"npm run -s watch\" \"node server.js\"",
     "watch": "watchify index.js -d -t babelify -o public/bundle.js",
     "build": "NODE_ENV=production browserify index.js -t babelify -g uglifyify -o public/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -34,6 +34,7 @@
   "devDependencies": {
     "babelify": "^5.0.3",
     "browserify": "^9.0.3",
+    "parallelshell": "^1.1.1",
     "uglifyify": "^3.0.1",
     "watchify": "^2.3.0"
   }
