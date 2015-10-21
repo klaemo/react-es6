@@ -1,18 +1,22 @@
-const React = require('react')
-const marked = require('marked')
+'use strict'
 
-const Comment = React.createClass({
-  render() {
-		const rawMarkup = marked(this.props.children.toString())
-    return (
-      <div className="comment">
-        <h2 className="comment-author">
-          {this.props.author}
-        </h2>
-        <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
-      </div>
-    )
-  }
-})
+import React, { PropTypes } from 'react'
+import marked from 'marked'
 
-module.exports = Comment
+// stateless component
+const Comment = (props) => {
+  const rawMarkup = marked(props.children.toString())
+  return (
+    <div className='comment'>
+      <h2 className='comment-author'>{props.author}</h2>
+      <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+    </div>
+  )
+}
+
+Comment.propTypes = {
+  author: PropTypes.string.isRequired,
+  children: PropTypes.string
+}
+
+export default Comment

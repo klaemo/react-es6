@@ -1,25 +1,29 @@
-const React = require('react')
-const CommentList = require('./comment-list')
-const CommentForm = require('./comment-form')
+/* global fetch */
+'use strict'
 
-const CommentBox = React.createClass({
-	getInitialState() {
-    return { data: [] }
-  },
+import React, { Component, PropTypes } from 'react'
+import CommentList from './comment-list'
+import CommentForm from './comment-form'
 
-  loadComments() {
+export default class CommentBox extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { data: [] }
+  }
+
+  loadComments () {
     fetch(this.props.url)
       .then(response => response.json())
       .then(data => this.setState({ data: data }))
       .catch(err => console.error(this.props.url, err.toString()))
-  },
+  }
 
-  componentDidMount() {
-		this.loadComments()
-    setInterval(this.loadComments, this.props.pollInterval)
-  },
+  componentDidMount () {
+    this.loadComments()
+    setInterval(() => this.loadComments(), this.props.pollInterval)
+  }
 
-  handleCommentSubmit(comment) {
+  handleCommentSubmit (comment) {
     const comments = this.state.data
     const newComments = comments.concat([ comment ])
 
@@ -36,17 +40,20 @@ const CommentBox = React.createClass({
     .then(response => response.json())
     .then(data => this.setState({ data: data }))
     .catch(err => console.error(this.props.url, err.toString()))
-  },
+  }
 
-  render() {
+  render () {
     return (
-      <div className="comment-box">
+      <div className='comment-box'>
         <h1>Comments</h1>
         <CommentList data={this.state.data} />
         <CommentForm onCommentSubmit={this.handleCommentSubmit} />
       </div>
     )
   }
-})
+}
 
-module.exports = CommentBox
+CommentBox.propTypes = {
+  url: PropTypes.string.isRequired,
+  pollInterval: PropTypes.number.isRequired
+}

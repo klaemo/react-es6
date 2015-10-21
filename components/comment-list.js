@@ -1,22 +1,27 @@
-const React = require('react')
-const Comment = require('./comment')
+'use strict'
 
-const CommentList = React.createClass({
-  render() {
-		const commentNodes = this.props.data.map((comment, i) => {
-      return (
-        <Comment author={comment.author} key={i}>
-          {comment.text}
-        </Comment>
-      )
-    })
+import React, { PropTypes } from 'react'
+import Comment from './comment'
 
+// stateless component
+const CommentList = (props) => {
+  const commentNodes = props.data.map((comment, i) => {
     return (
-      <div className="comment-list">
-        {commentNodes}
-      </div>
+      <Comment author={comment.author} key={i}>
+        {comment.text}
+      </Comment>
     )
-  }
-})
+  })
 
-module.exports = CommentList
+  return (
+    <div className='comment-list'>
+      {commentNodes}
+    </div>
+  )
+}
+
+CommentList.propTypes = {
+  data: PropTypes.array.isRequired
+}
+
+export default CommentList

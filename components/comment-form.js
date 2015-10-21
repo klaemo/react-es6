@@ -1,7 +1,9 @@
-const React = require('react')
+'use strict'
 
-const CommentForm = React.createClass({
-	handleSubmit(e) {
+import React, { Component, PropTypes } from 'react'
+
+export default class CommentForm extends Component {
+  handleSubmit (e) {
     e.preventDefault()
     const author = this.refs.author.value.trim()
     const text = this.refs.text.value.trim()
@@ -15,17 +17,19 @@ const CommentForm = React.createClass({
     this.refs.author.value = ''
     this.refs.text.value = ''
     return
-  },
+  }
 
-  render() {
+  render () {
     return (
-      <form className="comment-form" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Your name" ref="author" />
-        <input type="text" placeholder="Say something..." ref="text" />
-        <input type="submit" value="Post" />
+      <form className='comment-form' onSubmit={this.handleSubmit}>
+        <input type='text' placeholder='Your name' ref='author' />
+        <input type='text' placeholder='Say something...' ref='text' />
+        <input type='submit' value='Post' />
       </form>
     )
   }
-})
+}
 
-module.exports = CommentForm
+CommentForm.propTypes = {
+  onCommentSubmit: PropTypes.func.isRequired
+}
