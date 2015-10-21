@@ -7,7 +7,12 @@
     "start": "parallelshell \"npm run -s watch\" \"node server.js\"",
     "watch": "watchify index.js -d -t babelify -o public/bundle.js",
     "build": "NODE_ENV=production browserify index.js -t babelify -g uglifyify -o public/bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard --verbose | snazzy"
+  },
+  "standard": {
+    "ignore": [
+      "public", "server.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -36,6 +41,8 @@
     "babelify": "^6.4.0",
     "browserify": "^11.2.0",
     "parallelshell": "^2.0.0",
+    "snazzy": "^2.0.1",
+    "standard": "^5.3.1",
     "uglifyify": "^3.0.1",
     "watchify": "^3.4.0"
   }
