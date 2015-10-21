@@ -3,8 +3,8 @@ const React = require('react')
 const CommentForm = React.createClass({
 	handleSubmit(e) {
     e.preventDefault()
-    const author = React.findDOMNode(this.refs.author).value.trim()
-    const text = React.findDOMNode(this.refs.text).value.trim()
+    const author = this.refs.author.value.trim()
+    const text = this.refs.text.value.trim()
 
     if (!text || !author) {
       return
@@ -12,8 +12,8 @@ const CommentForm = React.createClass({
 
     // TODO: send request to the server
     this.props.onCommentSubmit({ author: author, text: text })
-    React.findDOMNode(this.refs.author).value = ''
-    React.findDOMNode(this.refs.text).value = ''
+    this.refs.author.value = ''
+    this.refs.text.value = ''
     return
   },
 
