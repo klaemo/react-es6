@@ -10,7 +10,8 @@ npm install
 npm start
 ```
 
-This will install all the necessary dependencies, start the server and watch your code for changes so it'll get transpiled ([Babel](http://babeljs.io)) and bundled ([browserify](http://browserify.org)) on the fly.
+This will install all the necessary dependencies, start the server and watch your code for changes
+so it'll get transpiled ([Babel](http://babeljs.io)) and bundled ([browserify](http://browserify.org)) on the fly.
 
 `npm run build` will build a minified "production" version.
 
@@ -46,8 +47,9 @@ fetch(this.props.url)
   .catch(err => console.error(this.props.url, err.toString()))
 ```
 
-I decided not to use ES6 classes, because React's implementation doesn't seem quite ready yet. Also, I don't really like their syntax. ;-)
+After the update to `react 0.14` I decided to use the `class` syntax as well as stateless components
+and switch to ES6 style exports/imports.
 
 ## Contributing
 
-Just open an issue or pull request or whateveer :) 
+Just open an issue or pull request or whateveer :)
