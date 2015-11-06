@@ -22,6 +22,14 @@ Here and there I opted to use different libraries than in the original tutorial.
 - `marked` instead of `showdown` because the latter isn't compatible with browserify.
 - `whatwg-fetch` (the [proposed](https://fetch.spec.whatwg.org/) replacement for XHR) instead of jquery.
 
+## Babel
+
+As of Babel 6.0 we need to explicitly install all the presets we want to use. For this tutorial that's
+going to be `babel-preset-react` for the React related transforms and `babel-preset-es2015` for the ES6/ES2015
+syntax.
+
+The presets are enabled in `.babelrc`.
+
 ## Result
 
 I particularly like how `fetch` and ES6 arrow functions transformed this:

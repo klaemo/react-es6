@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "parallelshell \"npm run -s watch\" \"node server.js\"",
-    "watch": "watchify index.js -d -t babelify -o public/bundle.js",
+    "watch": "watchify index.js -dv -t babelify -o public/bundle.js",
     "build": "NODE_ENV=production browserify index.js -t babelify -g uglifyify -o public/bundle.js",
     "test": "standard --verbose | snazzy"
   },
   "standard": {
     "ignore": [
-      "public", "server.js"
+      "public",
+      "server.js"
     ]
   },
   "repository": {
@@ -33,13 +34,15 @@
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "marked": "^0.3.5",
-    "react": "0.14.0",
-    "react-dom": "^0.14.0",
+    "react": "~0.14.0",
+    "react-dom": "~0.14.0",
     "whatwg-fetch": "^0.10.0"
   },
   "devDependencies": {
-    "babelify": "^6.4.0",
-    "browserify": "^11.2.0",
+    "babel-preset-es2015": "^6.1.2",
+    "babel-preset-react": "^6.1.2",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.0",
     "parallelshell": "^2.0.0",
     "snazzy": "^2.0.1",
     "standard": "^5.3.1",
