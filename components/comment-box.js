@@ -8,6 +8,7 @@ import CommentForm from './comment-form'
 export default class CommentBox extends Component {
   constructor (props) {
     super(props)
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
     this.state = { data: [] }
   }
 
