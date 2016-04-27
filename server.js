@@ -20,14 +20,14 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.get('/comments.json', function(req, res) {
+app.get('/api/comments', function(req, res) {
   fs.readFile('comments.json', function(err, data) {
     res.setHeader('Content-Type', 'application/json');
     res.send(data);
   });
 });
 
-app.post('/comments.json', function(req, res) {
+app.post('/api/comments', function(req, res) {
   fs.readFile('comments.json', function(err, data) {
     var comments = JSON.parse(data);
     comments.push(req.body);

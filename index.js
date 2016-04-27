@@ -9,6 +9,6 @@ import { render } from 'react-dom'
 import CommentBox from './components/comment-box'
 
 render(
-  <CommentBox url='comments.json' pollInterval={2000} />,
+  <CommentBox url='/api/comments' pollInterval={2000} />,
   document.getElementById('content')
 )
